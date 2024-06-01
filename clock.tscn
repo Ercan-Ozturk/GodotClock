@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dthbeqgs17vfu"]
+[gd_scene load_steps=4 format=3 uid="uid://dthbeqgs17vfu"]
+
+[ext_resource type="Script" path="res://clock.gd" id="1_eok4b"]
 
 [sub_resource type="Gradient" id="Gradient_uacs1"]
 offsets = PackedFloat32Array(0.98, 1)
@@ -14,6 +16,8 @@ fill_to = Vector2(1, 0.5)
 
 [node name="Clock" type="Node2D"]
 position = Vector2(576, 324)
+script = ExtResource("1_eok4b")
+time_scale = 10.0
 
 [node name="Face" type="Sprite2D" parent="."]
 texture = SubResource("GradientTexture2D_7gh87")
@@ -78,19 +82,16 @@ color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(-8, -112, 8, -112, 0, -96)
 
 [node name="HourArm" type="Polygon2D" parent="."]
-rotation = 2.35619
 color = Color(0, 0, 0, 1)
 offset = Vector2(0, 32)
-polygon = PackedVector2Array(0, -88, -8, -52, -8, -16, 8, -16, 8, -52)
+polygon = PackedVector2Array(0.248718, -87.5692, -9.07178, -63.7128, -8, -16, 8, -16, 8.78461, -64.7846)
 
 [node name="MinuteArm" type="Polygon2D" parent="."]
-rotation = -2.35619
 color = Color(0, 0, 0.898039, 1)
 offset = Vector2(0, 32)
 polygon = PackedVector2Array(0, -128, -4, -104, -4, -8, 4, -8, 4, -104)
 
 [node name="SecondArm" type="Polygon2D" parent="."]
-rotation = -0.523599
 color = Color(0.647059, 0, 0, 1)
 offset = Vector2(0, 32)
-polygon = PackedVector2Array(0, -128, -4, -96, -4, -24, 4, -24, 4, -96)
+polygon = PackedVector2Array(0, -128, -4, -44, -4, -24, 4, -24, 4, -44)
