@@ -1,3 +1,8 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1717256631
+::res://::1717361599
+clock.gd::GDScript::-1::1717361538::0::1::::Clock<>RigidBody2D<>::
+clock.tscn::PackedScene::8507369435145016306::1717361542::0::1::::<><>::res://clock.gd
 icon.svg::CompressedTexture2D::807549741893282196::1717256068::1717256072::1::::<><>::
+main.gd::GDScript::-1::1717358102::0::1::::<>Node2D<>::
+main.tscn::PackedScene::1276781902441820950::1717361542::0::1::::<><>::res://main.gd<>uid://dthbeqgs17vfu::::res://clock.tscn
+README.md::TextFile::-1::1717259027::0::1::::<><>::

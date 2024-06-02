@@ -1,4 +1,5 @@
-extends Node2D
+class_name Clock
+extends RigidBody2D
 
 
 enum StartTimeMode {
@@ -16,11 +17,16 @@ enum StartTimeMode {
 @export_range(0, 59) var start_minute := 0
 @export_range(0, 59) var start_second := 0
 
+@export_group("Nodes")
+@export var collision_shape: CollisionShape2D
+@export var visualization: Node2D
+@export_subgroup("Arms")
+@export var second_arm: Node2D
+@export var minute_arm: Node2D
+@export var hour_arm: Node2D
+
 var seconds:= 0.0
 
-@onready var second_arm:= $SecondArm as Node2D
-@onready var minute_arm := $MinuteArm as Node2D
-@onready var hour_arm := $HourArm as Node2D
 
 func _ready() -> void:
 	Time.get_time_dict_from_system()
@@ -37,6 +43,13 @@ func _ready() -> void:
 		if start_time != StartTimeMode.SYSTEM_TIME:
 			seconds += start_second + start_minute * 60 + start_hour * 3600
 
+func set_uniform_scale(scale_factor: float) -> void:
+	var scale_vector = Vector2(scale_factor, scale_factor)
+	collision_shape.scale = scale_vector
+	mass = scale_factor * scale_factor
+	visualization.scale = scale_vector
+	
+	
 func _process(delta: float) -> void:
 	seconds += delta * time_scale
 	second_arm.rotation = fmod(seconds, 60) * TAU / 60.0
