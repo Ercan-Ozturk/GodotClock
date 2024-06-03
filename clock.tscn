@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dthbeqgs17vfu"]
+[gd_scene load_steps=9 format=3 uid="uid://dthbeqgs17vfu"]
 
 [ext_resource type="Script" path="res://clock.gd" id="1_eok4b"]
+[ext_resource type="Shader" path="res://clock.gdshader" id="1_oqaoy"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mnhhy"]
 bounce = 0.25
@@ -8,17 +9,23 @@ bounce = 0.25
 [sub_resource type="CircleShape2D" id="CircleShape2D_i77a3"]
 radius = 128.0
 
-[sub_resource type="Gradient" id="Gradient_uacs1"]
-offsets = PackedFloat32Array(0.98, 1)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l4tph"]
+shader = ExtResource("1_oqaoy")
+shader_parameter/second_color = Color(0.5, 0, 0, 1)
+shader_parameter/minute_color = Color(0, 0.5, 0, 1)
+shader_parameter/hour_color = Color(0, 0, 0.5, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_7gh87"]
-gradient = SubResource("Gradient_uacs1")
+[sub_resource type="Gradient" id="Gradient_tc24v"]
+offsets = PackedFloat32Array(0.35, 0.5, 0.65)
+colors = PackedColorArray(1, 1, 1, 1, 0.772549, 0.901961, 0.772549, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5nc73"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_nqxvp"]
 width = 256
 height = 256
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(1, 0.5)
+color_ramp = SubResource("Gradient_tc24v")
+noise = SubResource("FastNoiseLite_5nc73")
 
 [node name="Clock" type="RigidBody2D" node_paths=PackedStringArray("collision_shape", "visualization", "second_arm", "minute_arm", "hour_arm")]
 position = Vector2(576, 324)
@@ -35,7 +42,8 @@ hour_arm = NodePath("HourArm")
 shape = SubResource("CircleShape2D_i77a3")
 
 [node name="Face" type="Sprite2D" parent="."]
-texture = SubResource("GradientTexture2D_7gh87")
+material = SubResource("ShaderMaterial_l4tph")
+texture = SubResource("NoiseTexture2D_nqxvp")
 
 [node name="Hour0" type="Polygon2D" parent="Face"]
 color = Color(0.647059, 0, 0, 1)

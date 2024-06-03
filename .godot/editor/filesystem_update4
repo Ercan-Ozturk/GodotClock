@@ -1,4 +1,4 @@
 res://clock.tscn
 res://main.tscn
 res://clock.gd
-res://main.gd
+res://clock.gdshader
