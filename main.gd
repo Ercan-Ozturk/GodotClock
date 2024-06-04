@@ -1,7 +1,9 @@
 extends Node2D
 
-## Clock to be spawned.
-@export var clock_scene: PackedScene
+## Clock to be spawned, C# version.
+@export var clock_scene_csharp: PackedScene
+## Clock to be spawned, GDScript version.
+@export var clock_scene_gdscript: PackedScene
 ## Radius of the clock, in pixels.
 @export var clock_radius := 128.0
 
@@ -32,13 +34,27 @@ func _ready() -> void:
 
 func _on_bottom_body_entered(body: Node2D) -> void:
 	body.queue_free()
+	
+func _spawn_clock_csharp() -> Node2D:
+	var clock := clock_scene_csharp.instantiate() as Clock
+	clock.StartTime = ClockGDScript.StartTimeMode.RANDOM_TIME
+	clock.TimeScale = randf_range(time_scale_min, time_scale_max)
+	clock.SetUniformScale(randf_range(scale_min, scale_max))
+	return clock
 
-func _on_spawn_timer_timeout() -> void:
-
-	var clock := clock_scene.instantiate() as Clock
-	clock.start_time = Clock.StartTimeMode.RANDOM_TIME
+func _spawn_clock_gdscript() -> Node2D:
+	var clock := clock_scene_gdscript.instantiate() as ClockGDScript
+	clock.start_time = ClockGDScript.StartTimeMode.RANDOM_TIME
 	clock.time_scale = randf_range(time_scale_min, time_scale_max)
 	clock.set_uniform_scale(randf_range(scale_min, scale_max))
+	return clock
+	
+func _on_spawn_timer_timeout() -> void:
+	var clock: Node2D
+	if randf() < 0.5:
+		clock = _spawn_clock_csharp()
+	else:
+		clock = _spawn_clock_gdscript()
 	clock.position = Vector2(
 			randf_range(clock_radius, _window_width - clock_radius),
 			-3.0 * clock_radius

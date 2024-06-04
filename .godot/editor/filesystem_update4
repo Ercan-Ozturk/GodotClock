@@ -1,4 +1,9 @@
 res://clock.tscn
-res://main.tscn
-res://clock.gd
 res://clock.gdshader
+res://clock.gd
+res://main.tscn
+res://main.gd
+res://clock_csharp.tscn
+res://Clock.cs
+res://Main.cs
+res://main_csharp.tscn

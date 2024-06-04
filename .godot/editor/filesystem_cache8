@@ -1,8 +1,12 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1717417151
-clock.gd::GDScript::-1::1717361890::0::1::::Clock<>RigidBody2D<>::
-clock.tscn::PackedScene::8507369435145016306::1717362293::0::1::::<><>::res://clock.gd
+::res://::1717500929
+Clock.cs::CSharpScript::-1::1717500605::0::1::::Clock<>RigidBody2D<>::
+clock.gd::GDScript::-1::1717495689::0::1::::ClockGDScript<>RigidBody2D<>::
+clock.gdshader::Shader::-1::1717500743::0::1::::<><>::
+clock_csharp.tscn::PackedScene::8507369435145016306::1717500743::0::1::::<><>::res://clock.gdshader<>res://Clock.cs
+clock_gdscript.tscn::PackedScene::1831173827369350952::1717495357::0::1::::<><>::res://clock.gd<>res://clock.gdshader
 icon.svg::CompressedTexture2D::807549741893282196::1717256068::1717256072::1::::<><>::
-main.gd::GDScript::-1::1717362279::0::1::::<>Node2D<>::
-main.tscn::PackedScene::1276781902441820950::1717362293::0::1::::<><>::res://main.gd<>uid://dthbeqgs17vfu::::res://clock.tscn
+main.gd::GDScript::-1::1717500743::0::1::::<>Node2D<>::
+main.tscn::PackedScene::1276781902441820950::1717500743::0::1::::<><>::res://main.gd<>uid://dthbeqgs17vfu::::res://clock_csharp.tscn<>uid://1dbfvg3spuq7::::res://clock_gdscript.tscn
+main_gdscript.tscn::PackedScene::1176016978676364846::1717500929::0::1::::<><>::res://main.gd<>uid://dthbeqgs17vfu::::res://clock_csharp.tscn<>uid://1dbfvg3spuq7::::res://clock_gdscript.tscn
 README.md::TextFile::-1::1717259027::0::1::::<><>::

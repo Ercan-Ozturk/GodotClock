@@ -1,0 +1,120 @@
+[gd_scene load_steps=9 format=3 uid="uid://dthbeqgs17vfu"]
+
+[ext_resource type="Shader" path="res://clock.gdshader" id="1_oqaoy"]
+[ext_resource type="Script" path="res://Clock.cs" id="1_oysyy"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mnhhy"]
+bounce = 0.25
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i77a3"]
+radius = 128.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l4tph"]
+shader = ExtResource("1_oqaoy")
+shader_parameter/second_color = Color(0.5, 0, 0, 1)
+shader_parameter/minute_color = Color(0, 0.5, 0, 1)
+shader_parameter/hour_color = Color(0, 0, 0.5, 1)
+
+[sub_resource type="Gradient" id="Gradient_tc24v"]
+offsets = PackedFloat32Array(0.35, 0.5, 0.65)
+colors = PackedColorArray(1, 1, 1, 1, 0.850517, 0.912376, 0.224213, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5nc73"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_nqxvp"]
+width = 256
+height = 256
+color_ramp = SubResource("Gradient_tc24v")
+noise = SubResource("FastNoiseLite_5nc73")
+
+[node name="Clock" type="RigidBody2D" node_paths=PackedStringArray("_collisionShape", "_visualization", "_secondArm", "_minuteArm", "_hourArm")]
+position = Vector2(576, 324)
+physics_material_override = SubResource("PhysicsMaterial_mnhhy")
+script = ExtResource("1_oysyy")
+StartTime = 1
+_collisionShape = NodePath("CollisionShape2D")
+_visualization = NodePath("Face")
+_secondArm = NodePath("SecondArm")
+_minuteArm = NodePath("MinuteArm")
+_hourArm = NodePath("HourArm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_i77a3")
+
+[node name="Face" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_l4tph")
+texture = SubResource("NoiseTexture2D_nqxvp")
+
+[node name="Hour0" type="Polygon2D" parent="Face"]
+color = Color(0.647059, 0, 0, 1)
+polygon = PackedVector2Array(-12, -112, 12, -112, 0, -96)
+
+[node name="Hour1" type="Polygon2D" parent="Face"]
+rotation = 0.523599
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-8, -112, 8, -112, 0, -96)
+
+[node name="Hour2" type="Polygon2D" parent="Face"]
+rotation = 1.0472
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-8, -112, 8, -112, 0, -96)
+
+[node name="Hour3" type="Polygon2D" parent="Face"]
+rotation = 1.5708
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-8, -112, 8, -112, 0, -96)
+
+[node name="Hour4" type="Polygon2D" parent="Face"]
+rotation = 2.0944
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-8, -112, 8, -112, 0, -96)
+
+[node name="Hour5" type="Polygon2D" parent="Face"]
+rotation = 2.61799
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-8, -112, 8, -112, 0, -96)
+
+[node name="Hour6" type="Polygon2D" parent="Face"]
+rotation = 3.14159
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-8, -112, 8, -112, 0, -96)
+
+[node name="Hour7" type="Polygon2D" parent="Face"]
+rotation = 3.66519
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-8, -112, 8, -112, 0, -96)
+
+[node name="Hour8" type="Polygon2D" parent="Face"]
+rotation = 4.18879
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-8, -112, 8, -112, 0, -96)
+
+[node name="Hour9" type="Polygon2D" parent="Face"]
+rotation = 4.71239
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-8, -112, 8, -112, 0, -96)
+
+[node name="Hour10" type="Polygon2D" parent="Face"]
+rotation = 5.23599
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-8, -112, 8, -112, 0, -96)
+
+[node name="Hour11" type="Polygon2D" parent="Face"]
+rotation = 5.75959
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-8, -112, 8, -112, 0, -96)
+
+[node name="HourArm" type="Polygon2D" parent="."]
+color = Color(0, 0, 0, 1)
+offset = Vector2(0, 32)
+polygon = PackedVector2Array(0.248718, -87.5692, -9.07178, -63.7128, -8, -16, 8, -16, 8.78461, -64.7846)
+
+[node name="MinuteArm" type="Polygon2D" parent="."]
+color = Color(0, 0, 0.898039, 1)
+offset = Vector2(0, 32)
+polygon = PackedVector2Array(0, -128, -4, -104, -4, -8, 4, -8, 4, -104)
+
+[node name="SecondArm" type="Polygon2D" parent="."]
+color = Color(0.647059, 0, 0, 1)
+offset = Vector2(0, 32)
+polygon = PackedVector2Array(0, -128, -4, -44, -4, -24, 4, -24, 4, -44)

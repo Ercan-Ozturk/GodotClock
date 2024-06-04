@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://sgqn8tnlqvja"]
+
+[ext_resource type="Script" path="res://Main.cs" id="1_80pud"]
+[ext_resource type="PackedScene" uid="uid://dthbeqgs17vfu" path="res://clock_csharp.tscn" id="2_hq3ur"]
+[ext_resource type="PackedScene" uid="uid://1dbfvg3spuq7" path="res://clock_gdscript.tscn" id="3_ra66q"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ekaoj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lb66t"]
+size = Vector2(1, 1)
+
+[node name="Main" type="Node2D" node_paths=PackedStringArray("_bottom", "_ground")]
+script = ExtResource("1_80pud")
+_clockSceneCSharp = ExtResource("2_hq3ur")
+_clockSceneGDScript = ExtResource("3_ra66q")
+_bottom = NodePath("Bottom")
+_ground = NodePath("Ground")
+
+[node name="Bottom" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom"]
+shape = SubResource("WorldBoundaryShape2D_ekaoj")
+
+[node name="Ground" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+shape = SubResource("RectangleShape2D_lb66t")
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="OnSpawnTimerTimeout"]

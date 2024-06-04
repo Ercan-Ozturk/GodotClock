@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "f3uao7QZxqJuucSa7wNPuBslUQnNP4xPPKzjxHBehU516yvjvfCjoYpzzzsFKMlVhtf4AW1TNhGmkYWA6X5DfQ==",
+  "success": true,
+  "projectFilePath": "D:\\Dev\\GodotProjects\\Clock\\Clock.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ercan\\.nuget\\packages\\godot.sourcegenerators\\4.2.2\\godot.sourcegenerators.4.2.2.nupkg.sha512",
+    "C:\\Users\\ercan\\.nuget\\packages\\godotsharp\\4.2.2\\godotsharp.4.2.2.nupkg.sha512",
+    "C:\\Users\\ercan\\.nuget\\packages\\godotsharpeditor\\4.2.2\\godotsharpeditor.4.2.2.nupkg.sha512",
+    "C:\\Users\\ercan\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.31\\microsoft.netcore.app.ref.6.0.31.nupkg.sha512",
+    "C:\\Users\\ercan\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.31\\microsoft.windowsdesktop.app.ref.6.0.31.nupkg.sha512",
+    "C:\\Users\\ercan\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.31\\microsoft.aspnetcore.app.ref.6.0.31.nupkg.sha512"
+  ],
+  "logs": []
+}

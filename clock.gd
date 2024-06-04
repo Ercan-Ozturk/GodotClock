@@ -1,4 +1,4 @@
-class_name Clock
+class_name ClockGDScript
 extends RigidBody2D
 
 
